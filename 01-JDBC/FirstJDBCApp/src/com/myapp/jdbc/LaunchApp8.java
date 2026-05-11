@@ -1,0 +1,69 @@
+//Prepared statements
+//Insertion
+
+package com.myapp.jdbc;
+import java.util.*;
+import java.sql.*;
+
+public class LaunchApp8 {
+
+	public static void main(String[] args) {
+		Connection connect = null;
+//		Statement statement = null;
+		PreparedStatement prepStatement = null;
+		
+		try {
+			connect = UtilityJdbc.getConnection();
+			
+			//prepare Statement
+			String sql = "INSERT INTO studentinfo (id, sname, sage, scity) VALUES (?, ?, ?, ?)";
+			prepStatement = connect.prepareStatement(sql);
+			
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter the DB details: ");
+			
+			System.out.println("Enter id: ");
+			int id = sc.nextInt();
+			sc.nextLine();
+			prepStatement.setInt(1, id);
+			
+			System.out.println("Enter Name: ");
+			String name = sc.nextLine();
+			prepStatement.setString(2, name);
+			
+			System.out.println("Enter Age: ");
+			int age = sc.nextInt();
+			sc.nextLine();
+			prepStatement.setInt(3, age);
+			
+			System.out.println("Enter city: ");
+			String city = sc.nextLine();
+			prepStatement.setString(4, city);
+			
+			
+			//process
+			int rowsAffected = prepStatement.executeUpdate();
+			if(rowsAffected == 0) {
+				System.out.println("No rows affected!");
+			}
+			else {
+				System.out.println("Data inserted successfully.");
+			}
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				UtilityJdbc.closeConnection(prepStatement, connect);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+	}
+
+}

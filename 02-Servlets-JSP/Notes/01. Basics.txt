@@ -1,0 +1,24 @@
+- Web Applications
+- Internet
+- Client & Server
+- HTTPS
+- Static and Dynamic Response
+
+- for dynamic response, we use Servlets
+- Servlets is a simple java program which resides on a server
+- in the server software there is a container (servlet container) which contains the java program
+- this java program is not executed by jvm
+- the servlet will be executed by the server software
+- Server software : Apache Tomcat
+C:\Program Files (x86)\Java\jre1.8.0_431
+C:\Program Files\Java\jdk-21
+
+-- install apache tomcat
+
+-- to develope web applications, eclipse should have EE perspective
+-- eclipse should be Enterprise Edition
+
+--New -> Dynamic Web Project
+
+-- servlet is a java program which has the capability to handle requests coming from the client
+and to response back to the client

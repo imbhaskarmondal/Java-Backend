@@ -1,0 +1,62 @@
+//with try catch
+package com.myapp.jdbc;
+import java.sql.*;
+
+public class LaunchApp6 {
+
+	public static void main(String[] args) {
+		Connection connect = null;
+		Statement statement = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			String url = "jdbc:mysql://localhost:3306/jdbclearning";
+			String user = "root";
+			String password = "Mysql@123";
+			connect = DriverManager.getConnection(url, user, password);
+			
+			statement = connect.createStatement();
+			
+			//query
+			//String sqlQuery = "INSERT INTO studentinfo (id, sname, sage, scity) VALUES (2, 'Pankaj', 22, 'Kolkata')";
+			String sqlQuery = "SELECT * FROM studentinfo";
+			boolean status = statement.execute(sqlQuery);
+			
+			if(status) {
+				ResultSet rs = statement.getResultSet();
+				boolean found = false;
+				while(rs.next()) {
+					found = true;
+					System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getInt(3) + " " + rs.getString(4));
+				}
+				
+				if(!found) {
+					System.out.println("No records found.");
+				}
+			}
+			else {
+				int rows = statement.getUpdateCount();
+				if(rows == 0) {
+					System.out.println("No rows affected.");
+				}
+				else {
+					System.out.println("Non-retrieval query executed successfully");
+				}
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+		    try {
+				statement.close();
+				connect.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+}

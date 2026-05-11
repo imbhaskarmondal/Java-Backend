@@ -1,0 +1,42 @@
+//with try catch
+package com.myapp.jdbc;
+import java.sql.*;
+
+public class LaunchApp6 {
+
+	public static void main(String[] args) {
+		Connection connect = null;
+		Statement statement = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			String url = "jdbc:mysql://localhost:3306/jdbclearning";
+			String user = "root";
+			String password = "Mysql@123";
+			connect = DriverManager.getConnection(url, user, password);
+			
+			statement = connect.createStatement();
+			
+			//query
+			String sqlQuery = "INSERT INTO studentinfo (id, sname, sage, scity) VALUES (2, 'Pankaj', 22, 'Kolkata')";
+			boolean status = statement.execute(sqlQuery);
+			
+			ResultSet rs = statement.getResultSet();
+			
+			if(status) {
+				System.out.println("Retrieval Query Executed Successfully");
+			}
+			else {
+				System.out.println("Non-retrieval query executed successfully");
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+
+	}
+
+}

@@ -1,0 +1,16 @@
+//using Utility Class
+package com.myapp.jdbc;
+import java.sql.*;
+
+public class LaunchApp7 {
+
+	public static void main(String[] args) {
+		try {
+			Connection connect = UtilityJdbc.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

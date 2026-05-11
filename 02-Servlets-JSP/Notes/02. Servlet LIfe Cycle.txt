@@ -1,0 +1,9 @@
+1. static block gets executed when the servlet is loaded; only once
+
+2. Constructor is executed internally by the web container; only once
+
+3. init() method is executed; only once
+
+4. service() method is executed for every request by the client
+
+5. destroy() method is executed internally when the server is stopped; only once

@@ -1,0 +1,14 @@
+1. import the required package
+(also download and add the database specific jar file to the project)
+
+2. load and register the driver
+
+3. establish the connection
+
+4. create the statements
+
+5. execute the query
+
+6. process the result
+
+7. close

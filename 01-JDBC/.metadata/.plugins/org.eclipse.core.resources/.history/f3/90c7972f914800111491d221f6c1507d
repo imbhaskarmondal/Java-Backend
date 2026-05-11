@@ -1,0 +1,38 @@
+//Prepared statements
+package com.myapp.jdbc;
+import java.sql.*;
+
+public class LaunchApp8 {
+
+	public static void main(String[] args) {
+		Connection connect = null;
+		Statement statement;
+		PreparedStatement prepStatement = null;
+		
+		try {
+			connect = UtilityJdbc.getConnection();
+			
+			//prepare Statement
+			String sql = "INSERT INTO studentinfo (id, sname, sage, scity) VALUES (?, ?, ?, ?)";
+			prepStatement = connect.prepareStatement(sql);
+			
+			//process
+			
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				UtilityJdbc.closeConnection(prepStatement, connect);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+	}
+
+}

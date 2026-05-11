@@ -1,0 +1,17 @@
+package com.myapp.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class UtilityJdbc throws ClassNotFoundException, SQLException {
+	static {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+	}
+	
+	public static Connection getConnection() {
+		String url = "jdbc:mysql://localhost:3306/jdbclearning";
+		String user = "root";
+		String password = "Mysql@123";
+		return DriverManager.getConnection(url, user, password);
+	}
+}

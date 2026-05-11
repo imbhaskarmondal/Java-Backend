@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Second Web App</title>
+</head>
+<body bgcolor="cyan" style="align-content: center">
+<h1>Welcome to our Second Web Application</h1>
+<h2>Please kindly enter your details: </h2>
+
+<form method="POST" action="./firstServlet">
+	<table>
+		<tr>
+		<td>User name: </td>
+		<td><input type="text" value="uname"></td>
+		</tr>
+		<tr>
+		<td>User city: </td>
+		<td><input type="text" value="ucity"></td>
+		</tr>
+		<tr>
+		<td><input type="submit" value="SignUp"></td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

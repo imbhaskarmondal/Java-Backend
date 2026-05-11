@@ -1,0 +1,48 @@
+package com.myapp.jdbc;
+import java.sql.*;
+
+public class LaunchApp5 {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		//load and register the driver
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		//establish the connection
+		String url = "jdbc:mysql://localhost:3306/jdbclearning";
+		String user = "root";
+		String password = "Mysql@123";
+		Connection connect = DriverManager.getConnection(url, user, password);
+		
+		//create statement
+		Statement statement = connect.createStatement();
+		
+		//execute query
+		String sqlQuery = "SELECT * FROM studentinfo";
+		boolean status = statement.execute(sqlQuery);
+		
+		//process query
+		if(status) {
+			//select
+			ResultSet rs = statement.getResultSet();
+			while(rs.next()) {
+				System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getInt(3) + " " + rs.getString(4));
+			}
+		}
+		else {
+			//insert, update, delete
+			int rows = statement.getUpdateCount();
+			if(rows == 0) {
+				System.out.println("Operation Failed");
+			}
+			else {
+				System.out.println("Operation Successful");
+			}
+		}
+		
+		//close
+		statement.close();
+		connect.close();
+
+	}
+
+}

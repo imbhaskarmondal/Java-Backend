@@ -1,0 +1,6 @@
+Request Dispatching
+-- how multiple servlets communicate with each other
+
+-- can be achieved by two methods:
+	1. Forwarding method
+	2. include method
