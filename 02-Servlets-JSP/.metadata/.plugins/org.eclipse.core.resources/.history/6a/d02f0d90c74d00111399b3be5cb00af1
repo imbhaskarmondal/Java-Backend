@@ -25,9 +25,7 @@ public class FirstServlet extends HttpServlet {
 		
 		PrintWriter writer = response.getWriter();
 		writer.println("<h1>Response from First Servlet</h1>");
-		
-//		Do not add writer.close() in servlets/JSPs, Tomcat closes streams automatically at end of request.
-//		writer.close();
+		writer.close();
 		
 		System.out.println("Control again in First Servlet");
 	}
