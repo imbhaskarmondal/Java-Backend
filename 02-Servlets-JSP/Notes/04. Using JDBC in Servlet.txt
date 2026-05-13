@@ -1,0 +1,2 @@
+-- add mysql connector (jar file) to the project build path
+-- also add it to the Deployment Assembly (Web Deployment Assembly)
